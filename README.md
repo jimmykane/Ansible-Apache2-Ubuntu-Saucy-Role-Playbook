@@ -1,8 +1,8 @@
 Ansible Apache 2.4 Ubuntu Saucy Playbook
 ========================================
 
-This playbook or role (referable run as a role) will install Apache 2.4 on an Ubuntu Saucy64 installation.
-----------------------------------------------------------------------------------------------------------
+This role will install Apache 2.4 and enable,disable, delete Vhosts on an Ubuntu Saucy64 installation.
+------------------------------------------------------------------------------------------------------
 
 You can get the code or install it with ansible galaxy
 
