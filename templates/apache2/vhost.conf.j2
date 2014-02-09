@@ -1,0 +1,23 @@
+# {{ ansible_managed }}
+
+<VirtualHost {{apache_host}}:{{apache_port_http}}>
+
+    ServerAdmin                           {{ item['admin_email'] }}
+    ServerName                            {{ item['host'] }}
+
+    {% for alias in item['aliases']|default([]) %}
+    ServerAlias                           {{ alias }}
+    {% endfor %}
+
+    DocumentRoot {{ apache_root }}/{{ item['host'] }}/public_html
+
+    ErrorLog                     /var/log/apache2/{{ item['host'] }}/error.log
+    CustomLog                    /var/log/apache2/{{ item['host'] }}/access.log common
+
+    <Directory {{ apache_root }}/{{ item['host'] }}/public_html/>
+
+        AllowOverride {{ item['allowoverride'] | default("None") }}
+
+    </Directory>
+
+</VirtualHost>

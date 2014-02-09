@@ -1,0 +1,62 @@
+---
+# Thread management
+apache_flavor: "prefork"
+
+# Httpd user and group
+apache_user: "www-data"
+apache_group: "www-data"
+
+# Default apache base directory (without trailing '/')
+apache_root: "/var/www"
+# Default apache host and ports
+apache_host: "*"
+apache_port_http: 80
+apache_port_https: 443
+
+# Packages for apache
+apache_packages:
+  - apache2
+  - apache2-doc
+  - apache2-utils
+  - libapache2-mod-php5
+
+# Modules for apache
+apache_modules:
+  - alias
+  - alias
+  - rewrite
+  - proxy
+  - proxy_fcgi
+
+#Sites for apache
+deleted_vhost_sites:
+  - {
+      host: 'del.example.com',
+      user: 'delexample',
+      group: 'delexample',
+      admin_email: 'admin@del.example.com',
+      disabled: True
+    }
+
+disabled_vhost_sites: &disabled
+  - {
+      host: 'dev.example.com',
+      user: 'devexample',
+      group: 'devexample',
+      admin_email: 'admin@dev.example.com',
+      disabled: True
+    }
+
+vhost_sites:
+  - *disabled
+  - {
+      host: 'test.dev',
+      user: 'test',
+      group: 'test',
+      admin_email: 'admin@test.com',
+      aliases: [
+        test.dev
+        *.test.com
+      ],
+      allowoverride: "None"
+    }

@@ -1,0 +1,8 @@
+---
+
+- name: Disable vhosts
+  file:
+    path: /etc/apache2/sites-enabled/{{ item['host'] }}.conf
+    state: absent
+  with_items: disabled_vhost_sites
+  notify: Restart Apache

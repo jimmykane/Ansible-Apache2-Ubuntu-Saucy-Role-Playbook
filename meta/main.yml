@@ -1,0 +1,12 @@
+---
+galaxy_info:
+  author: "Dimitrios Kanellopoulos"
+  license: MIT
+  min_ansible_version: 1.4
+  platforms:
+    - name: Ubuntu
+      versions:
+        - saucy
+  categories:
+    - web
+dependencies: []

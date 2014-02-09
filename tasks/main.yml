@@ -1,0 +1,15 @@
+---
+- include: apache2.yml
+
+- include: create-sites.yml
+  when: vhost_sites is defined
+- include: disable-sites.yml
+  when: disabled_vhost_sites is defined
+- include: delete-sites.yml
+  when: deleted_vhost_sites is defined
+
+# In case notifications fail
+- name: Reload Apache
+  service:
+      name: apache2
+      state: reloaded
