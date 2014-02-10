@@ -1,4 +1,4 @@
-Ansible Apache 2.4 Ubuntu Saucy Playbook
+Ansible Apache 2.4 Ubuntu Saucy Role
 ========================================
 
 This role will install Apache 2.4 and enable,disable, delete Vhosts on an Ubuntu Saucy64 installation.
@@ -22,33 +22,10 @@ Some tips and how to use
 
 First build a structure of a project as described in [Ansible Best Practices](http://docs.ansible.com/playbooks_best_practices.html)
 
-Example:
+After that add the role to the roles dir. Or you can install it via ansible galaxy.
 
-```
-production                # inventory file for production servers
-stage                     # inventory file for stage environment
+Look at the default variables and edit the Vhosts with your preferences.
+You might also want to override them via setting them in ```group_vars``` or ```host_vars```
 
-group_vars/
-   group1                 # here we assign variables to particular groups
-   group2                 # ""
-host_vars/
-   hostname1              # if systems need specific variables, put them here
-   hostname2              # ""
 
-site.yml                  # master playbook
-webservers.yml            # playbook for webserver tier
-dbservers.yml             # playbook for dbserver tier
-
-roles/
-   apache2 # Here is where apache 2 playbook should be added along with other roles
-
-    webtier/              # same kind of structure as "common" was above, done for the webtier role
-    monitoring/           # ""
-    fooapp/
-```
-
-Now that you have a nice structure add the role to the roles dir. Or you can install it via ansible galaxy. Either-ways just add the book and the role to your webtier or the the correct playbook.
-
-After that, go to the default variables and edit the Vhosts with your preferences. You can also just override them via settings them in ```group_vars``` or ```host_vars```
-
-That's it. Enjoy
+Don't forget to add include it as a role at your playbooks
